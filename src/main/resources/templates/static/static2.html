@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Static</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/3.3.7-1/css/bootstrap.css"/>
+    <script src="/webjars/jquery/1.11.1/jquery.js"></script>
+</head>
+<body>
+
+<div class="container">
+    <canvas id="myChart"></canvas>
+</div>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.bundle.js"></script>
+<script>
+    var ctx = document.getElementById("myChart").getContext('2d');
+
+
+    $.ajax("/api/employees/list", {
+        success: function (data) {
+
+            var lnames=[];
+            data.forEach(function(element) {
+                lnames.push(element['firstName']+" "+element['firstName'])
+            });
+
+            var lsalary=[];
+            data.forEach(function(element) {
+                lsalary.push(element['salary'])
+            });
+            draw(lnames,lsalary)
+
+        }
+    });
+
+
+    function draw(lnames,lsalary) {
+
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: lnames,
+                datasets: [{
+                    label: '# of Salaries',
+                    data: lsalary,
+                    borderWidth: 1
+                }]
+            }});
+    }
+
+</script>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Index</title>
+    <link rel="stylesheet" href="/webjars/jquery/1.11.1/jquery.js"/>
+    <link rel="stylesheet" href="/webjars/bootstrap/3.3.7-1/css/bootstrap.css"/>
+    <link rel="stylesheet" href="/webjars/bootstrap/3.3.7-1/js/bootstrap.js"/>
+</head>
+<body>
+<div class="container">
+
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                        aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Task</a>
+            </div>
+
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a th:if="${#authorization.expression('hasAnyRole(''ROLE_ADMIN'')')}" href="/jobhistory">jobhistory</a></li>
+                    <li><a th:if="${#authorization.expression('hasAnyRole(''Accounting'', ''Finance'', ''Administration'')')}" href="/job">job</a></li>
+                    <li><a th:if="${#authorization.expression('hasAnyRole(''Accounting'', ''Finance'', ''Administration'')')}" href="/employee">employee</a></li>
+                    <li><a th:if="${#authorization.expression('hasAnyRole(''Sales'',''Administration'')')}" href="/location">location</a></li>
+                    <li><a th:if="${#authorization.expression('hasAnyRole(''Sales'',''Administration'')')}" href="/country">country</a></li>
+                    <li><a th:if="${#authorization.expression('hasAnyRole(''Sales'',''Administration'')')}" href="/region">region</a></li>
+                    <li><a th:if="${#authorization.expression('hasAnyRole(''Administration'')')}" href="/department">department</a></li>
+                    <li><a th:if="${#authorization.expression('hasAnyRole(''Administration'')')}" href="/static/static1">static1</a></li>
+                    <li><a th:if="${#authorization.expression('hasAnyRole(''Administration'')')}" href="/static/static2">static2</a></li>
+                    <li><a  href="/swagger-ui.html">swagger-ui</a></li>
+                    <li><a href="/logout">logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Index</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/3.3.7-1/css/bootstrap.css"/>
+</head>
+<body>
+<div class="container">
+    <form method="post" th:action="@{'/employee/update/'+${employee.getEmployeeId()}}" th:object="${employee}">
+        <div class="form-group">
+            <label for="employeeId">Employee Id</label>
+            <input type="text" disabled="disabled" class="form-control" name="employeeId" id="employeeId"
+                   th:field="*{employeeId}"/>
+        </div>
+        <div class="form-group">
+            <label for="firstName">First Name</label>
+            <input type="text" class="form-control" name="firstName" id="firstName" th:field="*{firstName}"/>
+        </div>
+        <div class="form-group">
+            <label for="lastName">Last Name</label>
+            <input type="text" class="form-control" name="lastName" id="lastName" th:field="*{lastName}"/>
+        </div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="text" class="form-control" name="email" id="email" th:field="*{email}"/>
+        </div>
+        <div class="form-group">
+            <label for="phoneNumber">Phone Number</label>
+            <input type="text" class="form-control" name="phoneNumber" id="phoneNumber" th:field="*{phoneNumber}"/>
+        </div>
+        <div class="form-group">
+            <label for="hireDate">Hire Date</label>
+            <input type="text" class="form-control" name="hireDate" id="hireDate" th:field="*{hireDate}"/>
+        </div>
+
+        <div class="form-group">
+            <label for="regionId">Job</label>
+            <select name="regionId" id="regionId" th:field="*{jobId}" class="form-control">
+                <option th:each="r :${jobs}" th:text="${r.getJobTitle()}" th:value="${r.getJobId()}"></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="salary">Salary</label>
+            <input type="text" class="form-control" name="salary" id="salary" th:field="*{salary}"/>
+        </div>
+        <div class="form-group">
+            <label for="commissionPct">Commission Pct</label>
+            <input type="text" class="form-control" name="commissionPct" id="commissionPct" th:field="*{commissionPct}"/>
+        </div>
+
+        <div class="form-group">
+            <label for="managerId">Manger</label>
+            <select name="managerId" id="managerId" th:field="*{managerId}" class="form-control">
+                <option th:each="r :${employees}" th:text="${r.getFirstName()+' '+r.getLastName()}" th:value="${r.getEmployeeId()}"></option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="departmentId">Department</label>
+            <select name="departmentId" id="departmentId" th:field="*{departmentId}" class="form-control">
+                <option th:each="r :${departments}" th:text="${r.getDepartmentName()}" th:value="${r.getDepartmentId()}"></option>
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <a class="btn  btn-info" href="/employee">back</a>
+    </form>
+</div>
+</body>
+</html>

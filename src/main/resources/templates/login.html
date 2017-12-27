@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Login</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/3.3.7-1/css/bootstrap.css"/>
+</head>
+<body>
+<div class="container">
+    <ol>
+        <li> try JWHALEN/password it's from Administration department</li>
+        <li> try SHIGGINS/password it's from Accounting department</li>
+        <li> try JRUSSEL/password it's from Sales department</li>
+        <li> try NGREENBE/password it's from Finance department</li>
+        <li> try 'any email form database'/password and it will open nav based on its department</li>
+    </ol>
+
+    <form method="post" action="/login">
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="text" class="form-control" name="username" id="email"/>
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" name="password" id="password"/>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Index</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/3.3.7-1/css/bootstrap.css"/>
+</head>
+<body>
+<div class="container">
+    <form method="post" th:action="@{'/country/update/'+${country.getCountryId()}}" th:object="${country}">
+        <div class="form-group">
+            <label for="countryId">Country Id</label>
+            <input type="text" disabled="disabled" class="form-control" name="countryId" id="countryId"
+                   th:field="*{countryId}"/>
+        </div>
+        <div class="form-group">
+            <label for="countryName">Country Name</label>
+            <input type="text" class="form-control" name="countryName" id="countryName" th:field="*{countryName}"/>
+        </div>
+        <div class="form-group">
+            <label for="regionId">Region</label>
+            <select name="regionId" id="regionId" th:field="*{regionId}" class="form-control">
+                <option th:each="r :${regions}" th:text="${r.getRegionName()}" th:value="${r.getRegionId()}"></option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <a class="btn  btn-info" href="/country">back</a>
+    </form>
+</div>
+</body>
+</html>

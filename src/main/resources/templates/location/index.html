@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Index</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/3.3.7-1/css/bootstrap.css"/>
+</head>
+<body>
+<div class="container">
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Location Id</th>
+            <th scope="col">Street Address</th>
+            <th scope="col">Postal Code</th>
+            <th scope="col">City</th>
+            <th scope="col">State Province</th>
+            <th scope="col">Country Id</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="c : ${locations}">
+            <td><a th:href="'/location/update/'+${c.getLocationId()}" th:text="${c.getLocationId()}"></a></td>
+            <td th:text="${c.getStreetAddress()}"></td>
+            <td th:text="${c.getPostalCode()}"></td>
+            <td th:text="${c.getCity()}"></td>
+            <td th:text="${c.getStateProvince()}"></td>
+            <td th:text="${c.getCountryId()}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

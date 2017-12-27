@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Index</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/3.3.7-1/css/bootstrap.css"/>
+</head>
+<body>
+<div class="container">
+    <form method="post" th:action="@{'/jobhistory/update/'+${jobhistory.getEmployeeId()}+'/'+${jobhistory.getStartDate().getTime()}}" th:object="${jobhistory}">
+        <div class="form-group">
+            <label for="employeeId">Employee Id</label>
+            <input type="text" disabled="disabled" class="form-control" name="employeeId" id="employeeId"
+                   th:field="*{employeeId}"/>
+        </div>
+        <div class="form-group">
+            <label for="startDate">Start Date</label>
+            <input type="text" disabled="disabled" class="form-control" name="startDate" id="startDate"
+                   th:field="*{startDate}"/>
+        </div>
+        <div class="form-group">
+            <label for="endDate">End Date</label>
+            <input type="text" class="form-control" name="endDate" id="endDate" th:field="*{endDate}"/>
+        </div>
+        <div class="form-group">
+            <label for="jobId">Job</label>
+            <select name="jobId" id="jobId" th:field="*{jobId}" class="form-control">
+                <option th:each="r :${jobs}" th:text="${r.getJobTitle()}" th:value="${r.getJobId()}"></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="jobId">Department</label>
+            <select name="departmentId" id="departmentId" th:field="*{departmentId}" class="form-control">
+                <option th:each="r :${departments}" th:text="${r.getDepartmentName()}" th:value="${r.getDepartmentId()}"></option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <a class="btn  btn-info" href="/jobhistory">back</a>
+    </form>
+</div>
+</body>
+</html>

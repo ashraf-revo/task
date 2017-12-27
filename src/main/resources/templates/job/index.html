@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Index</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/3.3.7-1/css/bootstrap.css"/>
+</head>
+<body>
+<div class="container">
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Job Id</th>
+            <th scope="col">Job Title</th>
+            <th scope="col">Max Salary</th>
+            <th scope="col">Min Salary</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="c : ${jobs}">
+            <td><a th:href="'/job/update/'+${c.getJobId()}" th:text="${c.getJobId()}"></a></td>
+            <td th:text="${c.getJobTitle()}"></td>
+            <td th:text="${c.getMaxSalary()}"></td>
+            <td th:text="${c.getMinSalary()}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Index</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/3.3.7-1/css/bootstrap.css"/>
+</head>
+<body>
+<div class="container">
+    <form method="post" th:action="@{'/job/update/'+${job.getJobId()}}" th:object="${job}">
+        <div class="form-group">
+            <label for="jobId">Region Id</label>
+            <input type="text" disabled="disabled" class="form-control" name="jobId" id="jobId"
+                   th:field="*{jobId}"/>
+        </div>
+        <div class="form-group">
+            <label for="jobTitle">Job Title</label>
+            <input type="text" class="form-control" name="jobTitle" id="jobTitle" th:field="*{jobTitle}"/>
+        </div>
+        <div class="form-group">
+            <label for="maxSalary">MaxSalary</label>
+            <input type="text" class="form-control" name="maxSalary" id="maxSalary" th:field="*{maxSalary}"/>
+        </div>
+        <div class="form-group">
+            <label for="minSalary">MinSalary</label>
+            <input type="text" class="form-control" name="minSalary" id="minSalary" th:field="*{minSalary}"/>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <a class="btn  btn-info" href="/job">back</a>
+    </form>
+</div>
+</body>
+</html>

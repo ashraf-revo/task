@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Index</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/3.3.7-1/css/bootstrap.css"/>
+</head>
+<body>
+<div class="container">
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">CountryId</th>
+            <th scope="col">CountryName</th>
+            <th scope="col">RegionId</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="c : ${countries}">
+            <td><a th:href="'/country/update/'+${c.getCountryId()}" th:text="${c.getCountryId()}"></a> </td>
+            <td th:text="${c.getCountryName()}"></td>
+            <td th:text="${c.getRegionId()}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
